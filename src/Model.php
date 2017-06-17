@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\{
  * Class Model
  *
  * @package Bilyiv\Restful
+ * @author Vladyslav Bilyi <beliyvladislav@gmail.com>
  */
 class Model extends BaseModel
 {

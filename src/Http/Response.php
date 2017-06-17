@@ -14,6 +14,7 @@ use Symfony\Component\HttpKernel\Exception\{
  * Class Response
  *
  * @package Bilyiv\Restful\Http
+ * @author Vladyslav Bilyi <beliyvladislav@gmail.com>
  */
 class Response
 {
