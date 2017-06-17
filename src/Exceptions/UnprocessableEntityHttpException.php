@@ -2,6 +2,8 @@
 
 namespace Bilyiv\Restful\Exceptions;
 
+use Symfony\Component\HttpKernel\Exception\HttpException;
+
 /**
  * Class UnprocessableEntityHttpException
  *
