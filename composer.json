@@ -1,0 +1,16 @@
+{
+    "name": "bilyiv/restful",
+    "description": "A RESTful API package of general helpers for the Laravel framework.",
+    "type": "[]",
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "license": "[]",
+    "authors": [
+        {
+            "name": "Bilyi Vladyslav",
+            "email": "beliyvladislav@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
