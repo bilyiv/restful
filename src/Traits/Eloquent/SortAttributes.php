@@ -45,6 +45,6 @@ trait SortAttributes
      */
     protected function sortableFromArray(array $attributes)
     {
-        return array_intersect_key($attributes, $this->sortable);
+        return array_intersect_key($attributes, array_flip($this->sortable));
     }
 }

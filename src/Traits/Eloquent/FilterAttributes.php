@@ -41,6 +41,6 @@ trait FilterAttributes
      */
     protected function filterableFromArray(array $attributes)
     {
-        return array_intersect_key($attributes, $this->filterable);
+        return array_intersect_key($attributes, array_flip($this->filterable));
     }
 }
