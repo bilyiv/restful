@@ -62,10 +62,10 @@ trait HttpResponseData
      * Add an array of data to the response with specify key.
      *
      * @param string $key
-     * @param array $data
+     * @param mixed $data
      * @return $this
      */
-    public function add(string $key, array $data)
+    public function add(string $key, $data)
     {
         $this->data[$key] = $data;
 

@@ -20,10 +20,10 @@ class Response
     /**
      * Add an array of data with data key to the response.
      *
-     * @param array $data
+     * @param mixed $data
      * @return $this
      */
-    public function data(array $data)
+    public function data($data)
     {
         $this->add('data', $data);
 
