@@ -8,8 +8,10 @@ use Bilyiv\Restful\Traits\Eloquent\{
     SortAttributes
 };
 use Illuminate\Contracts\Pagination\Paginator;
-use Illuminate\Database\Eloquent\Model as BaseModel;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\{
+    Builder,
+    Model as BaseModel
+};
 
 /**
  * Class Model
