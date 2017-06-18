@@ -2,13 +2,8 @@
 
 namespace Bilyiv\Restful\Http;
 
-use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpKernel\Exception\{
-    AccessDeniedHttpException,
-    HttpException,
-    NotFoundHttpException,
-    UnauthorizedHttpException
-};
+use Bilyiv\Restful\Traits\{HttpExceptions, HttpResponseData};
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Class Response
@@ -18,122 +13,62 @@ use Symfony\Component\HttpKernel\Exception\{
  */
 class Response
 {
-    /**
-     * Array of headers.
-     *
-     * @var array
-     */
-    protected $headers = [];
+    use HttpExceptions, HttpResponseData;
 
     /**
-     * Array of meta data.
+     * Add an array of data with data key to the response.
      *
-     * @var array
-     */
-    protected $meta = [];
-
-    /**
-     * Add an array of headers to the response.
-     *
-     * @param array $headers
+     * @param array $data
      * @return $this
      */
-    public function headers(array $headers)
+    public function data(array $data)
     {
-        $this->headers = $headers;
+        $this->add('data', $data);
 
         return $this;
     }
 
     /**
-     * Add an array of meta data to the response.
+     * Add an array of meta data with meta key to the response.
      *
      * @param array $meta
      * @return $this
      */
     public function meta(array $meta)
     {
-        $this->meta = $meta;
+        $this->add('meta', $meta);
 
         return $this;
     }
 
     /**
-     * Send unauthorized error.
+     * Return no content response.
      *
-     * @param string $message
-     * @return HttpException
+     * @return mixed
      */
-    public function errorUnauthorized(string $message = 'Unauthorized'): HttpException
+    public function noContent()
     {
-        throw new UnauthorizedHttpException($message);
+        return $this->status(204)->send();
     }
 
     /**
-     * Send access denied error.
+     * Return created response.
      *
-     * @param string $message
-     * @return HttpException
-     */
-    public function errorAccessDenied(string $message = 'Forbidden'): HttpException
-    {
-        throw new AccessDeniedHttpException($message);
-    }
-
-    /**
-     * Send not found error.
-     *
-     * @param string $message
-     * @return HttpException
-     */
-    public function errorNotFound(string $message = 'Not found'): HttpException
-    {
-        throw new NotFoundHttpException($message);
-    }
-
-    /**
-     * Send an error.
-     *
-     * @param string $message
-     * @param int $code
-     * @return HttpException
-     */
-    public function error(string $message, int $code = 500): HttpException
-    {
-        throw new HttpException($code, $message);
-    }
-
-    /**
-     * Send no content response.
-     *
-     * @return JsonResponse
-     */
-    public function noContent(): JsonResponse
-    {
-        return $this->send(null, 204);
-    }
-
-    /**
-     * Send created response.
-     *
-     * @param array $data
      * @param string $location
-     * @return JsonResponse
+     * @return mixed
      */
-    public function created(array $data, string $location): JsonResponse
+    public function created(string $location)
     {
-        $this->headers(['Location' => $location])->send($data, 201);
+        return $this->status(201)->header('Location', $location)->send();
     }
 
     /**
-     * Send a response.
+     * Return a json response.
      *
-     * @param array|null $data
-     * @param int $code
      * @return JsonResponse
      */
-    public function send(array $data = null, int $code = 200): JsonResponse
+    public function send()
     {
-        return new JsonResponse(['data' => $data], $code, $this->headers);
+        return new JsonResponse($this->data, $this->code, $this->headers);
     }
 }
