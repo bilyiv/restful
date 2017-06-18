@@ -35,7 +35,7 @@ $paginator = Post::filter($request->input('filter', []))
 ```
 
 #### Response
-You can easily return success response or throw error exception.
+You can easily return success response or throw error exception from your controller.
 
 ```php
     return $this->response->data($data)->send();
