@@ -1,5 +1,5 @@
 # The bilyiv/restful package
-This package under active developing. Please don't use in production.
+This package under active developing. Please don't use it in production.
 
 ## Documentation
 
