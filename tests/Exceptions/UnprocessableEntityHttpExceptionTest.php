@@ -6,7 +6,7 @@ use Bilyiv\Restful\Exceptions\UnprocessableEntityHttpException;
 use Tests\TestCase;
 
 /**
- * Class UnprocessableEntityHttpException
+ * Class UnprocessableEntityHttpExceptionTest
  *
  * @package Bilyiv\Restful\Tests\Exceptions
  * @author Vladyslav Bilyi <beliyvladislav@gmail.com>
@@ -14,7 +14,7 @@ use Tests\TestCase;
 class UnprocessableEntityHttpExceptionTest extends TestCase
 {
     /**
-     * @var UnprocessableEntityHttpException
+     * @var UnprocessableEntityHttpExceptionTest
      */
     protected $exception;
 
