@@ -3,6 +3,8 @@
 namespace Bilyiv\Restful\Http;
 
 use Bilyiv\Restful\Traits\{HttpExceptions, HttpResponseData};
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Support\Facades\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
@@ -44,7 +46,7 @@ class Response
     /**
      * Return no content response.
      *
-     * @return mixed
+     * @return JsonResponse
      */
     public function noContent()
     {
@@ -55,11 +57,31 @@ class Response
      * Return created response.
      *
      * @param string $location
-     * @return mixed
+     * @return JsonResponse
      */
     public function created(string $location)
     {
         return $this->status(201)->header('Location', $location)->send();
+    }
+
+    /**
+     * Return paginated response.
+     *
+     * @param Paginator $paginator
+     * @return JsonResponse
+     */
+    public function paginated(Paginator $paginator)
+    {
+        return $this->data($paginator->items())
+            ->add('links', [
+                'self' => Request::fullUrl(),
+                'next' => $paginator->nextPageUrl(),
+                'prev' => $paginator->previousPageUrl()
+            ])
+            ->meta([
+                'count' => $paginator->count()
+            ])
+            ->send();
     }
 
     /**
