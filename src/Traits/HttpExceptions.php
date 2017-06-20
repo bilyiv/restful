@@ -81,7 +81,7 @@ trait HttpExceptions
      * @param int $code
      * @return HttpException
      */
-    public function error(string $message, int $code = 500): HttpException
+    public function error(string $message = 'Internal Server Error', int $code = 500): HttpException
     {
         throw new HttpException($code, $message);
     }

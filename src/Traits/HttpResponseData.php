@@ -59,7 +59,7 @@ trait HttpResponseData
     }
 
     /**
-     * Add an array of data to the response with specify key.
+     * Add a data to the response with specify key.
      *
      * @param string $key
      * @param mixed $data
