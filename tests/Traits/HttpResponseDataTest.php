@@ -26,7 +26,7 @@ class HttpResponseDataTest extends TestCase
     }
 
     /**
-     * Test adding http header of the response.
+     * Test adding http header to the response.
      */
     public function testHeader()
     {
