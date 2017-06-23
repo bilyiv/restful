@@ -31,13 +31,13 @@ class Model extends BaseModel
     protected $limit = 100;
 
     /**
-     * Scope a query to paginate models both with with filter, sort and embed scopes.
+     * Scope a query to paginate models both with filter, sort and embed scopes.
      *
      * @param Builder $query
      * @param array $params
      * @return Paginator
      */
-    public function scopePaginateWithParams($query, array $params)
+    public function scopePaginateWithParams($query, array $params): Paginator
     {
         return $query->scopes([
                 'filter' => [
